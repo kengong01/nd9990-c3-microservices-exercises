@@ -14,10 +14,10 @@ before_script:
   - echo "no tests"
 
 script:
-  - docker --version # print the version for logging
+  - docker version # print the version for logging
   - docker build -t slow-node .
-  - docker tag slow-node "$DOCKER_USERNAME"/slow-node:latest
+  - docker tag slow-node ${DOCKER_USERNAME}/slow-node:latest
 
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --p "$DOCKER_USERNAME"
-  - docker push "$DOCKER_USERNAME"/slow-node
+  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+  - docker push ${DOCKER_USERNAME}/slow-node
