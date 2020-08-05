@@ -15,7 +15,7 @@ before_script:
 
 script:
   - docker version # print the version for logging
-  - docker build -t simple-express .
+  - docker build -t ${DOCKER_USERNAME}/simple-express .
   - docker tag simple-express ${DOCKER_USERNAME}/simple-express:latest
 
 after_success:
