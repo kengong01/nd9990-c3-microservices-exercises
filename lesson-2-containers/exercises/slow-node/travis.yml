@@ -15,9 +15,9 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t simple-node .
-  - docker tag simple-node "$DOCKER_USERNAME"/simple-node:latest
+  - docker build -t slow-node .
+  - docker tag slow-node "$DOCKER_USERNAME"/slow-node:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --p "$DOCKER_USERNAME"
-  - docker push "$DOCKER_USERNAME"/simple-node
+  - docker push "$DOCKER_USERNAME"/slow-node
