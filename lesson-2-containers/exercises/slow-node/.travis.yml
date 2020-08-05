@@ -15,10 +15,9 @@ before_script:
 
 script:
   - docker version # print the version for logging
-  - docker build -t simple-reverse-proxy .
-  - docker tag simple-reverse-proxy ${DOCKER_USERNAME}/simple-reverse-proxy:latest
+  - docker build -t slow-node .
+  - docker tag slow-node ${DOCKER_USERNAME}/slow-node:latest
 
 after_success:
   - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-  - docker push ${DOCKER_USERNAME}/simple-reverse-proxy
-
+  - docker push ${DOCKER_USERNAME}/slow-node
